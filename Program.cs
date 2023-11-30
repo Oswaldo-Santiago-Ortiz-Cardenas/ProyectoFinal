@@ -360,7 +360,7 @@ namespace ProyectoFinal
             int indiceProducto = ObtenerOpcion(1, totalProductos) - 1;
 
             Console.WriteLine("Ingrese la cantidad a ingresar:");
-            int cantidadIngresar = Convert.ToInt32(Console.ReadLine());
+            int cantidadIngresar = int.Parse(Console.ReadLine());
 
             if (cantidadIngresar > 0)
             {
