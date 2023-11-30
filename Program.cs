@@ -79,13 +79,13 @@ namespace ProyectoFinal
                         AgregarProducto();
                         break;
                     case 2:
-                        EliminarProducto();
+                        EliminarProducto2();
                         break;
                     case 3:
-                        ModificarProducto();
+                        ModificarProducto3();
                         break;
                     case 4:
-                        MostrarInventario();
+                        MostrarInventario4();
                         break;
                     case 5:
                         return;
@@ -133,7 +133,7 @@ namespace ProyectoFinal
                 }
             }
         }
-        static void EliminarProducto()
+        static void EliminarProducto2()
         {
             Console.Clear();
             Console.WriteLine("===========================================");
@@ -167,7 +167,7 @@ namespace ProyectoFinal
             Console.ReadLine();
         }
 
-        static void ModificarProducto()
+        static void ModificarProducto3()
         {
             Console.Clear();
             Console.WriteLine("============================================");
@@ -198,7 +198,7 @@ namespace ProyectoFinal
             Console.ReadLine();
         }
 
-        static void MostrarInventario()
+        static void MostrarInventario4()
         {
             Console.Clear();
             Console.WriteLine("============================================");
