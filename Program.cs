@@ -28,6 +28,7 @@ namespace ProyectoFinal
                         GestionarProductos();
                         break;
                     case 2:
+                        GestionarAlmacenes();
                         break;
                     case 3:
                         break;
@@ -211,5 +212,90 @@ namespace ProyectoFinal
 
             Console.ReadLine();
         }
+        static void GestionarAlmacenes()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("=========================================");
+                Console.WriteLine("||  Gestionar Almacenes - Mi Tiendita  ||");
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine("|| 1. Agregar Almacén                  ||");
+                Console.WriteLine("|| 2. Eliminar Almacén                 ||");
+                Console.WriteLine("|| 3. Mostrar Almacenes                ||");
+                Console.WriteLine("|| 4. Volver al Menú Principal         ||");
+                Console.WriteLine("=========================================");
+                Console.WriteLine("Seleccione una opción:");
+
+                int opcionAlmacenes = ObtenerOpcion(1, 4);
+
+                switch (opcionAlmacenes)
+                {
+                    case 1:
+                        AgregarAlmacen();
+                        break;
+                    case 2:
+                        EliminarAlmacen();
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        return;
+                    default:
+                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        break;
+                }
+            }
+        }
+
+        static void AgregarAlmacen()
+        {
+            Console.Clear();
+            Console.WriteLine("=========================================");
+            Console.WriteLine("----- Pantalla para Agregar Almacén -----");
+            Console.WriteLine("=========================================");
+            Console.WriteLine("Ingrese el nombre del nuevo almacén:");
+            string nombreAlmacen = Console.ReadLine();
+
+            // Agregar el almacén a los arrays
+            almacenes[totalAlmacenes] = nombreAlmacen;
+            totalAlmacenes++;
+
+            Console.WriteLine("Confirmación: Almacén agregado exitosamente.");
+            Console.ReadLine();
+        }
+
+        static void EliminarAlmacen()
+        {
+            Console.Clear();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("----- Pantalla para Eliminar Almacén -----");
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Ingrese el nombre del almacén a eliminar:");
+            string nombreEliminar = Console.ReadLine();
+
+            // Buscar el almacén en los arrays
+            int index = Array.IndexOf(almacenes, nombreEliminar);
+
+            if (index != -1)
+            {
+                // Eliminar el almacén
+                for (int i = index; i < totalAlmacenes - 1; i++)
+                {
+                    almacenes[i] = almacenes[i + 1];
+                }
+
+                totalAlmacenes--;
+
+                Console.WriteLine("Confirmación: Almacén eliminado exitosamente.");
+            }
+            else
+            {
+                Console.WriteLine("El almacén no existe. No se pudo eliminar.");
+            }
+
+            Console.ReadLine();
+        }
+
     }
 }
