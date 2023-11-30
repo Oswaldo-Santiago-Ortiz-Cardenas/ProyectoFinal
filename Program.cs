@@ -142,12 +142,12 @@ namespace ProyectoFinal
             Console.WriteLine("Ingrese el nombre del producto a eliminar:");
             string nombreEliminar = Console.ReadLine();
 
-            // Buscar el producto en los arrays
+            
             int index = Array.IndexOf(productos, nombreEliminar);
 
             if (index != -1)
             {
-                // Eliminar el producto
+                
                 for (int i = index; i < totalProductos - 1; i++)
                 {
                     productos[i] = productos[i + 1];
