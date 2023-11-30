@@ -380,7 +380,7 @@ namespace ProyectoFinal
             }
             else
             {
-                Console.WriteLine("La cantidad ingresada no es válida.");
+                Console.WriteLine("La cantidad ingresada no es válida...");
             }
 
             Console.ReadLine();
