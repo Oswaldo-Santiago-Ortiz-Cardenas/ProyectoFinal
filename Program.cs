@@ -31,6 +31,7 @@ namespace ProyectoFinal
                         GestionarAlmacenes();
                         break;
                     case 3:
+                        AgregarYExtraerProductos();
                         break;
                     default:
                         Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
@@ -239,6 +240,7 @@ namespace ProyectoFinal
                         break;
                     case 3:
                         break;
+                        
                     case 4:
                         return;
                     default:
@@ -297,5 +299,95 @@ namespace ProyectoFinal
             Console.ReadLine();
         }
 
+        static void AgregarYExtraerProductos()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("==================================================");
+                Console.WriteLine("||  Agregar y Extraer Productos - Mi Tiendita   ||");
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("|| 1. Ingresar Producto en Almacén              ||");
+                Console.WriteLine("|| 2. Extraer Producto de Almacén               ||");
+                Console.WriteLine("|| 3. Ver Stock Actual                          ||");
+                Console.WriteLine("|| 4. Volver al Menú Principal                  ||");
+                Console.WriteLine("==================================================");
+                Console.WriteLine("Seleccione una opción:");
+
+                int opcionAgregarExtraer = ObtenerOpcion(1, 4);
+
+                switch (opcionAgregarExtraer)
+                {
+                    case 1:
+                        IngresarProductoEnAlmacen();
+                        break;
+                    case 2:
+                       
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+                        return;
+                    default:
+                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        break;
+                }
+            }
+        }
+        static void IngresarProductoEnAlmacen()
+        {
+            Console.Clear();
+            Console.WriteLine("======================================================");
+            Console.WriteLine("----- Pantalla para Ingresar Producto en Almacén -----");
+            Console.WriteLine("======================================================");
+            Console.WriteLine("Seleccione el almacén:");
+
+            for (int i = 0; i < totalAlmacenes; i++)
+            {
+                Console.WriteLine($"{i + 1}. {almacenes[i]}");
+            }
+
+            int indiceAlmacen = ObtenerOpcion(1, totalAlmacenes) - 1;
+
+            Console.WriteLine("Seleccione el producto a ingresar:");
+
+            for (int i = 0; i < totalProductos; i++)
+            {
+                Console.WriteLine($"{i + 1}. {productos[i]}");
+            }
+
+            int indiceProducto = ObtenerOpcion(1, totalProductos) - 1;
+
+            Console.WriteLine("Ingrese la cantidad a ingresar:");
+            int cantidadIngresar = Convert.ToInt32(Console.ReadLine());
+
+            if (cantidadIngresar > 0)
+            {
+                // Verificar si hay suficiente espacio en el inventario para agregar más productos
+                int espacioDisponible = 100 - cantidades[indiceProducto];
+                if (cantidadIngresar <= espacioDisponible)
+                {
+                    // Actualizar la cantidad en el inventario
+                    cantidades[indiceProducto] = cantidadIngresar;
+
+                    Console.WriteLine("Confirmación: Producto ingresado en el almacén exitosamente.");
+                }
+                else
+                {
+                    Console.WriteLine("No hay suficiente espacio en el inventario para ingresar esa cantidad.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("La cantidad ingresada no es válida.");
+            }
+
+            Console.ReadLine();
+
+
+
+
+        }
     }
 }
