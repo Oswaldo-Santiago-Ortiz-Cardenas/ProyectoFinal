@@ -239,8 +239,8 @@ namespace ProyectoFinal
                         EliminarAlmacen();
                         break;
                     case 3:
-                        break;
-                        
+                        MostrarAlmacenes();
+                        break;                    
                     case 4:
                         return;
                     default:
@@ -322,10 +322,10 @@ namespace ProyectoFinal
                         IngresarProductoEnAlmacen();
                         break;
                     case 2:
-                       
+                        ExtraerProductoDeAlmacen();
                         break;
                     case 3:
-
+                        VerStockActual();
                         break;
                     case 4:
                         return;
@@ -384,10 +384,85 @@ namespace ProyectoFinal
             }
 
             Console.ReadLine();
+        }
+        static void MostrarAlmacenes()
+        {
+            Console.Clear();
+            Console.WriteLine("===========================================");
+            Console.WriteLine("----- Pantalla para Mostrar Almacenes -----");
+            Console.WriteLine("===========================================");
+            Console.WriteLine("Lista de Almacenes:");
 
+            for (int i = 0; i < totalAlmacenes; i++)
+            {
+                Console.WriteLine($"Almacén {i + 1}: {almacenes[i]}");
+            }
 
+            Console.ReadLine();
+        }
+        static void ExtraerProductoDeAlmacen()
+        {
+            Console.Clear();
+            Console.WriteLine("=====================================================");
+            Console.WriteLine("----- Pantalla para Extraer Producto de Almacén -----");
+            Console.WriteLine("=====================================================");
+            Console.WriteLine("Seleccione el almacén:");
 
+            for (int i = 0; i < totalAlmacenes; i++)
+            {
+                Console.WriteLine($"{i + 1}. {almacenes[i]}");
+            }
 
+            int indiceAlmacen = ObtenerOpcion(1, totalAlmacenes) - 1;
+
+            Console.WriteLine("Seleccione el producto a extraer:");
+
+            for (int i = 0; i < totalProductos; i++)
+            {
+                Console.WriteLine($"{i + 1}. {productos[i]}");
+            }
+
+            int indiceProducto = ObtenerOpcion(1, totalProductos) - 1;
+
+            Console.WriteLine("Ingrese la cantidad a extraer:");
+            int cantidadExtraer = Convert.ToInt32(Console.ReadLine());
+
+            if (cantidadExtraer > 0)
+            {
+                // Verificar si hay suficiente cantidad en el inventario para extraer
+                if (cantidades[indiceProducto] >= cantidadExtraer)
+                {
+                    // Actualizar la cantidad en el inventario
+                    cantidades[indiceProducto] -= cantidadExtraer;
+
+                    Console.WriteLine("Confirmación: Producto extraído del almacén exitosamente.");
+                }
+                else
+                {
+                    Console.WriteLine("No hay suficiente cantidad en el inventario para extraer.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("La cantidad ingresada no es válida.");
+            }
+
+            Console.ReadLine();
+        }
+        static void VerStockActual()
+        {
+            Console.Clear();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("----- Pantalla para Ver Stock Actual -----");
+            Console.WriteLine("==========================================");
+
+            // Mostrar el stock actual en todos los almacenes
+            for (int i = 0; i < totalProductos; i++)
+            {
+                Console.WriteLine($"Producto {i + 1}: {productos[i]} - Almacén: {almacenes[i]} - Cantidad: {cantidades[i]}");
+            }
+
+            Console.ReadLine();
         }
     }
 }
