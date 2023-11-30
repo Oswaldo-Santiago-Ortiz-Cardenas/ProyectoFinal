@@ -77,10 +77,13 @@ namespace ProyectoFinal
                         AgregarProducto();
                         break;
                     case 2:
+                        EliminarProducto();
                         break;
                     case 3:
+                        ModificarProducto();
                         break;
                     case 4:
+                        MostrarInventario();
                         break;
                     case 5:
                         return;
@@ -127,6 +130,86 @@ namespace ProyectoFinal
                     Console.WriteLine($"Por favor, ingrese un número entre {min} y {max}.");
                 }
             }
+        }
+        static void EliminarProducto()
+        {
+            Console.Clear();
+            Console.WriteLine("===========================================");
+            Console.WriteLine("----- Pantalla para Eliminar Producto -----");
+            Console.WriteLine("===========================================");
+            Console.WriteLine("Ingrese el nombre del producto a eliminar:");
+            string nombreEliminar = Console.ReadLine();
+
+            // Buscar el producto en los arrays
+            int index = Array.IndexOf(productos, nombreEliminar);
+
+            if (index != -1)
+            {
+                // Eliminar el producto
+                for (int i = index; i < totalProductos - 1; i++)
+                {
+                    productos[i] = productos[i + 1];
+                    precios[i] = precios[i + 1];
+                    cantidades[i] = cantidades[i + 1];
+                }
+
+                totalProductos--;
+
+                Console.WriteLine("Confirmación: Producto eliminado exitosamente.");
+            }
+            else
+            {
+                Console.WriteLine("El producto no existe. No se pudo eliminar.");
+            }
+
+            Console.ReadLine();
+        }
+
+        static void ModificarProducto()
+        {
+            Console.Clear();
+            Console.WriteLine("============================================");
+            Console.WriteLine("----- Pantalla para Modificar Producto -----");
+            Console.WriteLine("============================================");
+            Console.WriteLine("Ingrese el nombre del producto a modificar:");
+            string nombreModificar = Console.ReadLine();
+
+            // Buscar el producto en los arrays
+            int index = Array.IndexOf(productos, nombreModificar);
+
+            if (index != -1)
+            {
+                // Modificar el producto
+                Console.WriteLine("Ingrese el nuevo precio:");
+                precios[index] = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Ingrese la nueva cantidad:");
+                cantidades[index] = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Confirmación: Producto modificado exitosamente.");
+            }
+            else
+            {
+                Console.WriteLine("El producto no existe. No se pudo modificar.");
+            }
+
+            Console.ReadLine();
+        }
+
+        static void MostrarInventario()
+        {
+            Console.Clear();
+            Console.WriteLine("============================================");
+            Console.WriteLine("----- Pantalla para Mostrar Inventario -----");
+            Console.WriteLine("============================================");
+            Console.WriteLine("Inventario Actual:");
+
+            for (int i = 0; i < totalProductos; i++)
+            {
+                Console.WriteLine($"Producto {i + 1}: [{productos[i]}] - Precio: [${precios[i]}] - Cantidad: [{cantidades[i]}]");
+            }
+
+            Console.ReadLine();
         }
     }
 }
