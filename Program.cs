@@ -501,6 +501,7 @@ namespace ProyectoFinal
                 }
             }
             Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
