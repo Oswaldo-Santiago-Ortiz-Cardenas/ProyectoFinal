@@ -469,12 +469,37 @@ namespace ProyectoFinal
             Console.WriteLine("----- Pantalla para Ver Stock Actual -----");
             Console.WriteLine("==========================================");
 
-            // Mostrar el stock actual en todos los almacenes
-            for (int i = 0; i < totalProductos; i++)
+            // Verificar si hay productos en el inventario y si se ha ingresado en algún almacén
+            if (totalProductos == 0 || totalAlmacenes == 0)
             {
-                Console.WriteLine($"Producto {i + 1}: {productos[i]} - Almacén: {almacenes[i]} - Cantidad: {cantidades[i]}");
+                Console.WriteLine("No hay productos ingresados en el almacén o no se han creado almacenes.");
             }
+            else
+            {
+                Console.WriteLine("Seleccione el almacén:");
+                for (int i = 0; i < totalAlmacenes; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {almacenes[i]}");
+                }
 
+                int indiceAlmacen = ObtenerOpcion(1, totalAlmacenes) - 1;
+
+                // Verificar si se ha ingresado algún producto en el almacén seleccionado
+                if (cantidades.Skip(indiceAlmacen * totalProductos).Take(totalProductos).All(cantidad => cantidad == 0))
+                {
+                    Console.WriteLine($"No se han ingresado productos en el almacén {almacenes[indiceAlmacen]}.");
+                }
+                else
+                {
+                    Console.WriteLine("Stock Actual en el Almacén:");
+
+                    // Mostrar el stock actual solo para el almacén seleccionado
+                    for (int i = 0; i < totalProductos; i++)
+                    {
+                        Console.WriteLine($"Producto {i + 1}: {productos[i]} - Cantidad: {cantidades[indiceAlmacen * totalProductos + i]}");
+                    }
+                }
+            }
             Console.ReadLine();
         }
     }
