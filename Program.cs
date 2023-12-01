@@ -102,11 +102,11 @@ namespace ProyectoFinal
             Console.WriteLine("==========================================");
             Console.WriteLine("----- Pantalla para Agregar Producto -----");
             Console.WriteLine("==========================================");
-            Console.WriteLine("Ingrese el nombre del producto:");
+            Console.Write("Ingrese el nombre del producto: ");
             string nombre = Console.ReadLine();
-            Console.WriteLine("Ingrese el precio del producto:");
+            Console.Write("Ingrese el precio del producto: ");
             double precio = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Ingrese la cantidad del producto:");
+            Console.Write("Ingrese la cantidad del producto: ");
             int cantidad = Convert.ToInt32(Console.ReadLine());
 
             // Agregar el producto a los arrays
@@ -115,6 +115,7 @@ namespace ProyectoFinal
             cantidades[totalProductos] = cantidad;
             totalProductos++;
 
+            Console.WriteLine("==========================================");
             Console.WriteLine("Confirmación: Producto agregado exitosamente.");
             Console.ReadLine();
         }
@@ -155,8 +156,9 @@ namespace ProyectoFinal
                     cantidades[i] = cantidades[i + 1];
                 }
                 // Disminuye el valor de la variable
-                totalProductos--; 
+                totalProductos--;
 
+                Console.WriteLine("===========================================");
                 Console.WriteLine("Confirmación: Producto eliminado exitosamente.");
             }
             else
@@ -362,6 +364,7 @@ namespace ProyectoFinal
                     Console.WriteLine($"{i + 1}. {almacenes[i]}");
                 }
                 int indiceAlmacenOrigen = ObtenerOpcion(1, totalAlmacenes) - 1;
+                Console.WriteLine("======================================================");
                 Console.WriteLine("Seleccione el producto a ingresar:");
 
                 for (int i = 0; i < totalProductos; i++)
@@ -371,7 +374,8 @@ namespace ProyectoFinal
 
                 int indiceProducto = ObtenerOpcion(1, totalProductos) - 1;
 
-                Console.WriteLine("Ingrese la cantidad a ingresar:");
+                Console.WriteLine("======================================================");
+                Console.WriteLine("Ingrese la nueva cantidad:");
                 int cantidadIngresar = int.Parse(Console.ReadLine());
 
                 if (cantidadIngresar > 0)
@@ -481,11 +485,12 @@ namespace ProyectoFinal
                     Console.WriteLine($"{i + 1}. {almacenes[i]}");
                 }
                 int indiceAlmacen = ObtenerOpcion(1, totalAlmacenes) - 1;
+                Console.WriteLine("==========================================");
                 Console.WriteLine($"Stock Actual en el Almacén {almacenes[indiceAlmacen]}:");
                 // Mostrar el stock actual solo para el almacén seleccionado
                 for (int i = 0; i < totalProductos; i++)
                 {
-                    Console.WriteLine($"Producto {i + 1}: {productos[i]} - Cantidad: {cantidades[indiceAlmacen * totalProductos + i]}");
+                    Console.WriteLine($"Producto {i + 1}: [{productos[i]}] - Cantidad: [{cantidades[indiceAlmacen * totalProductos + i]}]");
                 }
             }
             Console.ReadLine();
