@@ -34,7 +34,7 @@ namespace ProyectoFinal
                         AgregarYExtraerProductos();
                         break;
                     default:
-                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        Console.WriteLine("Error: Por favor, seleccione una opción válida.");
                         break;
                 }
             }
@@ -90,7 +90,7 @@ namespace ProyectoFinal
                     case 5:
                         return;
                     default:
-                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        Console.WriteLine("Error: Por favor, seleccione una opción válida.");
                         break;
                 }
             }
@@ -161,7 +161,7 @@ namespace ProyectoFinal
             }
             else
             {
-                Console.WriteLine("El producto no existe. No se pudo eliminar.");
+                Console.WriteLine("Error: El producto no existe. No se pudo eliminar.");
             }
 
             Console.ReadLine();
@@ -192,7 +192,7 @@ namespace ProyectoFinal
             }
             else
             {
-                Console.WriteLine("El producto no existe. No se pudo modificar.");
+                Console.WriteLine("Error: El producto no existe. No se pudo modificar.");
             }
 
             Console.ReadLine();
@@ -244,7 +244,7 @@ namespace ProyectoFinal
                     case 4:
                         return;
                     default:
-                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        Console.WriteLine("Error: Por favor, seleccione una opción válida.");
                         break;
                 }
             }
@@ -293,7 +293,7 @@ namespace ProyectoFinal
             }
             else
             {
-                Console.WriteLine("El almacén no existe. No se pudo eliminar.");
+                Console.WriteLine("Error: El almacén no existe. No se pudo eliminar.");
             }
 
             Console.ReadLine();
@@ -330,7 +330,7 @@ namespace ProyectoFinal
                     case 4:
                         return;
                     default:
-                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                        Console.WriteLine("Error: Por favor, seleccione una opción válida.");
                         break;
                 }
             }
