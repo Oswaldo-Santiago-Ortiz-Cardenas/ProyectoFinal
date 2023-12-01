@@ -407,7 +407,7 @@ namespace ProyectoFinal
 
             for (int i = 0; i < totalAlmacenes; i++)
             {
-                Console.WriteLine($"Almacén {i + 1}: {almacenes[i]}");
+                Console.WriteLine($"Almacén {i + 1}: [{almacenes[i]}]");
             }
 
             Console.ReadLine();
