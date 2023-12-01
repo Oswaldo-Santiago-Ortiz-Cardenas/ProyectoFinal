@@ -9,10 +9,10 @@ namespace ProyectoFinal
     internal class Program
     {
         static string[] productos = new string[100];
+        static string[] almacenes = new string[100];
         static double[] precios = new double[100];
         static int[] cantidades = new int[100];
         static int totalProductos = 0;
-        static string[] almacenes = new string[100];
         static int totalAlmacenes = 0;
 
         static void Main()
