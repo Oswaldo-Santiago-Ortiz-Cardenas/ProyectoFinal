@@ -341,18 +341,25 @@ namespace ProyectoFinal
             Console.WriteLine("======================================================");
             Console.WriteLine("----- Pantalla para Ingresar Producto en Almacén -----");
             Console.WriteLine("======================================================");
-            Console.WriteLine("Seleccione el almacén:");
-
-            for (int i = 0; i < totalAlmacenes; i++)
+            // Verificar si hay al menos un almacén y productos para ingresar
+            if (totalAlmacenes == 0 || totalProductos == 0)
             {
-                Console.WriteLine($"{i + 1}. {almacenes[i]}");
+                Console.WriteLine("Debe haber al menos un almacén y productos antes de realizar esta operación.");
             }
+            else 
+            {
+                Console.WriteLine("Seleccione el almacén:");
 
-            int indiceAlmacen = ObtenerOpcion(1, totalAlmacenes) - 1;
+                for (int i = 0; i < totalAlmacenes; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {almacenes[i]}");
+                }
 
-            Console.WriteLine("Seleccione el producto a ingresar:");
+                int indiceAlmacenOrigen = ObtenerOpcion(1, totalAlmacenes) - 1;
 
-            for (int i = 0; i < totalProductos; i++)
+                Console.WriteLine("Seleccione el producto a ingresar:");
+
+                for (int i = 0; i < totalProductos; i++)
             {
                 Console.WriteLine($"{i + 1}. {productos[i]}");
             }
@@ -365,14 +372,14 @@ namespace ProyectoFinal
             if (cantidadIngresar > 0)
             {
                 // Verificar si hay suficiente espacio en el inventario para agregar más productos
-                int espacioDisponible = 100 - cantidades[indiceProducto];
+                int espacioDisponible = 100 - cantidades[indiceAlmacenOrigen * totalProductos + indiceProducto];
                 if (cantidadIngresar <= espacioDisponible)
                 {
                     // Actualizar la cantidad en el inventario
-                    cantidades[indiceProducto] = cantidadIngresar;
+                    cantidades[indiceAlmacenOrigen * totalProductos + indiceProducto] += cantidadIngresar;
 
-                    Console.WriteLine("Confirmación: Producto ingresado en el almacén exitosamente.");
-                }
+                    Console.WriteLine($"Confirmación: {cantidadIngresar} unidades de {productos[indiceProducto]} ingresadas al almacén {almacenes[indiceAlmacenOrigen]}.");
+                 }
                 else
                 {
                     Console.WriteLine("No hay suficiente espacio en el inventario para ingresar esa cantidad.");
@@ -382,7 +389,7 @@ namespace ProyectoFinal
             {
                 Console.WriteLine("La cantidad ingresada no es válida...");
             }
-
+        }
             Console.ReadLine();
         }
         static void MostrarAlmacenes()
