@@ -343,6 +343,7 @@ namespace ProyectoFinal
         }
         static void IngresarProductoEnAlmacen()
         {
+
             Console.Clear();
             Console.WriteLine("======================================================");
             Console.WriteLine("----- Pantalla para Ingresar Producto en Almacén -----");
