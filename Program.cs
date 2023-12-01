@@ -154,8 +154,8 @@ namespace ProyectoFinal
                     precios[i] = precios[i + 1];
                     cantidades[i] = cantidades[i + 1];
                 }
-
-                totalProductos--;
+                // Disminuye el valor de la variable
+                totalProductos--; 
 
                 Console.WriteLine("Confirmación: Producto eliminado exitosamente.");
             }
