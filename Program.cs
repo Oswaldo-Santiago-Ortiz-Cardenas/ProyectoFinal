@@ -261,6 +261,12 @@ namespace ProyectoFinal
 
             // Agregar el almacén a los arrays
             almacenes[totalAlmacenes] = nombreAlmacen;
+
+            // Resetear la cantidad de productos en el nuevo almacén
+            for (int i = 0; i < totalProductos; i++)
+            {
+                cantidades[totalAlmacenes * totalProductos + i] = 0;
+            }
             totalAlmacenes++;
 
             Console.WriteLine("Confirmación: Almacén agregado exitosamente.");
