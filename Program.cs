@@ -292,8 +292,8 @@ namespace ProyectoFinal
                 {
                     almacenes[i] = almacenes[i + 1];
                 }
-
-                totalAlmacenes--;
+                // Disminuye el valor de la variable
+                totalAlmacenes--; 
 
                 Console.WriteLine("Confirmación: Almacén eliminado exitosamente.");
             }
