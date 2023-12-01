@@ -481,23 +481,12 @@ namespace ProyectoFinal
                 {
                     Console.WriteLine($"{i + 1}. {almacenes[i]}");
                 }
-
                 int indiceAlmacen = ObtenerOpcion(1, totalAlmacenes) - 1;
-
-                // Verificar si se ha ingresado algún producto en el almacén seleccionado
-                if (cantidades.Skip(indiceAlmacen * totalProductos).Take(totalProductos).All(cantidad => cantidad == 0))
+                Console.WriteLine($"Stock Actual en el Almacén {almacenes[indiceAlmacen]}:");
+                // Mostrar el stock actual solo para el almacén seleccionado
+                for (int i = 0; i < totalProductos; i++)
                 {
-                    Console.WriteLine($"No se han ingresado productos en el almacén {almacenes[indiceAlmacen]}.");
-                }
-                else
-                {
-                    Console.WriteLine("Stock Actual en el Almacén:");
-
-                    // Mostrar el stock actual solo para el almacén seleccionado
-                    for (int i = 0; i < totalProductos; i++)
-                    {
-                        Console.WriteLine($"Producto {i + 1}: {productos[i]} - Cantidad: {cantidades[indiceAlmacen * totalProductos + i]}");
-                    }
+                    Console.WriteLine($"Producto {i + 1}: {productos[i]} - Cantidad: {cantidades[indiceAlmacen * totalProductos + i]}");
                 }
             }
             Console.ReadLine();
