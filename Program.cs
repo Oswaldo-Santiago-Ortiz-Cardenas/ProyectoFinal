@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoFinal
 {
+    //codigo lagartooooooo
     internal class Program
     {
         static string[] productos = new string[100];
